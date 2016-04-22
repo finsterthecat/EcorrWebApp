@@ -13,27 +13,17 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("employees")
 public class EmployeeController {
- 
-    Employee employee = new Employee();
- 
     @RequestMapping(value = "/{name}", method = RequestMethod.GET, produces = "application/json")
     public Employee getEmployeeInJSON(@PathVariable String name) {
- 
-   	 employee.setName(name);
-   	 employee.setEmail("employee1@govonca.com");
- 
-   	 return employee;
- 
-    }
+        return getEmployee(name);    }
  
     @RequestMapping(value = "/{name}.xml", method = RequestMethod.GET, produces = "application/xml")
     public Employee getEmployeeInXML(@PathVariable String name) {
- 
-   	 employee.setName(name);
-   	 employee.setEmail("employee1@govonca.com");
- 
-   	 return employee;
- 
+        return getEmployee(name);
+    }
+    
+    private Employee getEmployee(String name) {
+        return new Employee(name, name + "@govonca.com");
     }
  
 }

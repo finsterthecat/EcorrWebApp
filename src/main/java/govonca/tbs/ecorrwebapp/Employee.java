@@ -9,9 +9,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  
 @XmlRootElement(name = "Employee")
 public class Employee {
- 
     String name;
- 
     String email;
  
     public String getName() {
@@ -30,7 +28,12 @@ public class Employee {
    	 this.email = email;
     }
  
-    public Employee() {
+    public Employee(String name, String email) {
+        this.name = name;
+        this.email = email;
     }
  
+    public Employee() {
+        
+    }
 }

@@ -28,7 +28,7 @@ and open the template in the editor.
 
     <servlet-mapping>
         <servlet-name>hello-dispatcher</servlet-name>
-        <url-pattern>/</url-pattern>
+        <url-pattern>/*</url-pattern>
     </servlet-mapping>
 
     <!-- For root context -->
