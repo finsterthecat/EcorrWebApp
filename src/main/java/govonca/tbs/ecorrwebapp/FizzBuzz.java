@@ -5,6 +5,8 @@
  */
 package govonca.tbs.ecorrwebapp;
 
+import java.util.HashMap;
+import java.util.Map;
 import javax.inject.Named;
 
 /**
@@ -13,12 +15,13 @@ import javax.inject.Named;
  */
 @Named
 public class FizzBuzz {
-    private static int count = 0;
+    @SuppressWarnings("FieldMayBeFinal")
+    private static Map<String, Integer> counts = new HashMap<>();
     
     public FizzBuzz() {}
     
-    public String speak() {
-        count +=1;
+    public String speak(String name) {
+        int count = incrCount(name);
         String ret = "";
         if (count % 3 == 0) {
             ret += "Fizz";
@@ -26,10 +29,15 @@ public class FizzBuzz {
         if (count % 5 == 0) {
             ret += "Buzz";
         }
-        if (ret.isEmpty()) {
-            ret = "Hello";
+        return ret.isEmpty() ? "Hello" : ret;
+    }
+
+    private int incrCount(String name) {
+        if (!counts.containsKey(name)) {
+            counts.put(name, 0);
         }
-        return ret;
+        counts.put(name, counts.get(name)+1);
+        return counts.get(name);
     }
     
 }
