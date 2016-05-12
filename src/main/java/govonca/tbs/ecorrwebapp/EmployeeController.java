@@ -5,14 +5,18 @@
  */
 package govonca.tbs.ecorrwebapp;
  
+import javax.inject.Inject;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
- 
+
 @RestController
 @RequestMapping("employees")
 public class EmployeeController {
+    @Inject
+    Employee employee;
+    
     @RequestMapping(value = "/{name}", method = RequestMethod.GET, produces = "application/json")
     public Employee getEmployeeInJSON(@PathVariable String name) {
         return getEmployee(name);    }
@@ -23,7 +27,9 @@ public class EmployeeController {
     }
     
     private Employee getEmployee(String name) {
-        return new Employee(name, name + "@govonca.com");
+        employee.setEmail(name + "@govonca.com");
+        employee.setName(name);
+        return employee;
     }
  
 }

@@ -5,15 +5,22 @@
  */
 package govonca.tbs.ecorrwebapp;
  
+import javax.inject.Inject;
+import javax.inject.Named;
+import javax.inject.Scope;
 import javax.xml.bind.annotation.XmlRootElement;
- 
+
 @XmlRootElement(name = "Employee")
+@Named
 public class Employee {
+    @Inject
+    FizzBuzz fizzBuzz;
+
     String name;
     String email;
  
     public String getName() {
-   	 return name;
+   	 return fizzBuzz.speak() + " " + name;
     }
  
     public void setName(String name) {
