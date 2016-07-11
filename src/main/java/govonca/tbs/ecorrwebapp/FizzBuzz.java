@@ -21,7 +21,7 @@ public class FizzBuzz {
     public FizzBuzz() {}
     
     public String speak(String name) {
-        int count = incrCount(name);
+        int count = nextCountForName(name);
         String ret = "";
         if (count % 3 == 0) {
             ret += "Fizz";
@@ -32,12 +32,11 @@ public class FizzBuzz {
         return ret.isEmpty() ? "Hello" : ret;
     }
 
-    private int incrCount(String name) {
-        if (!counts.containsKey(name)) {
-            counts.put(name, 0);
-        }
-        counts.put(name, counts.get(name)+1);
-        return counts.get(name);
+    private int nextCountForName(String name) {
+        Integer count = counts.get(name);
+        count = count == null ? 0 : count +1;
+        counts.put(name, count);
+        return count;
     }
     
 }
