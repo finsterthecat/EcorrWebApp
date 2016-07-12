@@ -8,6 +8,8 @@ package govonca.tbs.ecorrwebapp;
 import java.util.HashMap;
 import java.util.Map;
 import javax.inject.Named;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  *
@@ -17,18 +19,16 @@ import javax.inject.Named;
 public class FizzBuzz {
     @SuppressWarnings("FieldMayBeFinal")
     private static Map<String, Integer> counts = new HashMap<>();
-    
+    private static final Logger logger = LoggerFactory.getLogger(FizzBuzz.class.getName());
     public FizzBuzz() {}
     
     public String speak(String name) {
         int count = nextCountForName(name);
-        String ret = "";
-        if (count % 3 == 0) {
-            ret += "Fizz";
-        }
+        String ret = (count % 3 == 0) ? "Fizz" : "";
         if (count % 5 == 0) {
             ret += "Buzz";
         }
+        logger.debug("Speak: " + ret);
         return ret.isEmpty() ? "Hello" : ret;
     }
 
@@ -36,6 +36,7 @@ public class FizzBuzz {
         Integer count = counts.get(name);
         count = count == null ? 0 : count +1;
         counts.put(name, count);
+        logger.debug("Count =" + count);
         return count;
     }
     

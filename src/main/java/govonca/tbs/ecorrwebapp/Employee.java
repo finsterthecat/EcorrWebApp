@@ -21,12 +21,13 @@ public class Employee {
     String name;
     String email;
 
+    //Just exercising Spring injection. This usage probably violates some rules...
     public String getName() {
-        return fizzBuzz.speak(name) + " " + name;
+        return name;
     }
 
     public void setName(String name) {
-        this.name = name;
+        this.name = fizzBuzz.speak(name) + " " + name;
     }
 
     public String getEmail() {
