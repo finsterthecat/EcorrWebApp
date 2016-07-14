@@ -19,7 +19,8 @@ import org.slf4j.LoggerFactory;
 public class FizzBuzz {
     @SuppressWarnings("FieldMayBeFinal")
     private static Map<String, Integer> counts = new HashMap<>();
-    private static final Logger logger = LoggerFactory.getLogger(FizzBuzz.class.getName());
+    private static final Logger LOG = LoggerFactory.getLogger(FizzBuzz.class.getName());
+    
     public FizzBuzz() {}
     
     public String speak(String name) {
@@ -28,7 +29,7 @@ public class FizzBuzz {
         if (count % 5 == 0) {
             ret += "Buzz";
         }
-        logger.debug("Speak: " + ret);
+        LOG.debug("Speak!: {}", ret);
         return ret.isEmpty() ? "Hello" : ret;
     }
 
@@ -36,7 +37,7 @@ public class FizzBuzz {
         Integer count = counts.get(name);
         count = count == null ? 0 : count +1;
         counts.put(name, count);
-        logger.debug("Count =" + count);
+        LOG.debug("Count! = {}", count);
         return count;
     }
     
