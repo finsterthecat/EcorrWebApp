@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.RestController;
 public class EmployeeController {
     @Inject
     Employee employee;
+    @Inject
+    FizzBuzz fizzbuzz;
     
     @RequestMapping(value = "/{name}", method = RequestMethod.GET, produces = "application/json")
     public Employee getEmployeeInJSON(@PathVariable String name) {
@@ -28,7 +30,7 @@ public class EmployeeController {
     
     private Employee getEmployee(String name) {
         employee.setEmail(name + "@govonca.com");
-        employee.setName(name);
+        employee.setName(fizzbuzz.speak(name) + " " + name);
         return employee;
     }
  

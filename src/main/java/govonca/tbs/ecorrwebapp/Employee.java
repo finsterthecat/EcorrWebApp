@@ -14,20 +14,15 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Named
 @RequestScoped
 public class Employee {
-
-    @Inject
-    FizzBuzz fizzBuzz;
-
     String name;
     String email;
 
-    //Just exercising Spring injection. This usage probably violates some rules...
     public String getName() {
         return name;
     }
 
     public void setName(String name) {
-        this.name = fizzBuzz.speak(name) + " " + name;
+        this.name = name;
     }
 
     public String getEmail() {
