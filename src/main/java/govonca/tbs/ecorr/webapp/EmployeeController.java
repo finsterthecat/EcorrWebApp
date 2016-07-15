@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package govonca.tbs.ecorrwebapp;
+package govonca.tbs.ecorr.webapp;
  
+import govonca.tbs.ecorr.util.FizzBuzz;
 import javax.inject.Inject;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;

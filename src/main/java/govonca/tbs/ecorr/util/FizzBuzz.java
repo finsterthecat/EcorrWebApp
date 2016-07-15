@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package govonca.tbs.ecorrwebapp;
+package govonca.tbs.ecorr.util;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -17,12 +17,14 @@ import org.slf4j.LoggerFactory;
  */
 @Named
 public class FizzBuzz {
+
     @SuppressWarnings("FieldMayBeFinal")
     private static Map<String, Integer> counts = new HashMap<>();
     private static final Logger LOG = LoggerFactory.getLogger(FizzBuzz.class.getName());
-    
-    public FizzBuzz() {}
-    
+
+    public FizzBuzz() {
+    }
+
     public String speak(String name) {
         int count = nextCountForName(name);
         String ret = (count % 3 == 0) ? "Fizz" : "";
@@ -35,10 +37,10 @@ public class FizzBuzz {
 
     private int nextCountForName(String name) {
         Integer count = counts.get(name);
-        count = count == null ? 0 : count +1;
+        count = count == null ? 0 : count + 1;
         counts.put(name, count);
         LOG.debug("Count! = {}", count);
         return count;
     }
-    
+
 }

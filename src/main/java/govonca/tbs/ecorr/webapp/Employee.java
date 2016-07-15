@@ -3,10 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package govonca.tbs.ecorrwebapp;
+package govonca.tbs.ecorr.webapp;
 
 import javax.enterprise.context.RequestScoped;
-import javax.inject.Inject;
 import javax.inject.Named;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -14,6 +13,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Named
 @RequestScoped
 public class Employee {
+
     String name;
     String email;
 
