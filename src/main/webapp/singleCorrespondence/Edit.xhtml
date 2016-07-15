@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="SingleCorrespondenceEditDlg" widgetVar="SingleCorrespondenceEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditSingleCorrespondenceTitle}">
+            <h:form id="SingleCorrespondenceEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{singleCorrespondenceController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditSingleCorrespondenceLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{singleCorrespondenceController.selected.id}" title="#{bundle.EditSingleCorrespondenceTitle_id}" required="true" requiredMessage="#{bundle.EditSingleCorrespondenceRequiredMessage_id}"/>
+                        <p:outputLabel value="#{bundle.EditSingleCorrespondenceLabel_caseNumber}" for="caseNumber" />
+                        <p:inputText id="caseNumber" value="#{singleCorrespondenceController.selected.caseNumber}" title="#{bundle.EditSingleCorrespondenceTitle_caseNumber}" required="true" requiredMessage="#{bundle.EditSingleCorrespondenceRequiredMessage_caseNumber}"/>
+                        <p:outputLabel value="#{bundle.EditSingleCorrespondenceLabel_caseStatusCode}" for="caseStatusCode" />
+                        <p:inputText id="caseStatusCode" value="#{singleCorrespondenceController.selected.caseStatusCode}" title="#{bundle.EditSingleCorrespondenceTitle_caseStatusCode}" required="true" requiredMessage="#{bundle.EditSingleCorrespondenceRequiredMessage_caseStatusCode}"/>
+                        <p:outputLabel value="#{bundle.EditSingleCorrespondenceLabel_closedDate}" for="closedDate" />
+                        <p:calendar id="closedDate" pattern="MM/dd/yyyy" value="#{singleCorrespondenceController.selected.closedDate}" title="#{bundle.EditSingleCorrespondenceTitle_closedDate}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditSingleCorrespondenceLabel_dueDate}" for="dueDate" />
+                        <p:calendar id="dueDate" pattern="MM/dd/yyyy" value="#{singleCorrespondenceController.selected.dueDate}" title="#{bundle.EditSingleCorrespondenceTitle_dueDate}" required="true" requiredMessage="#{bundle.EditSingleCorrespondenceRequiredMessage_dueDate}" showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditSingleCorrespondenceLabel_sensitiveFlag}" for="sensitiveFlag" />
+                        <p:inputText id="sensitiveFlag" value="#{singleCorrespondenceController.selected.sensitiveFlag}" title="#{bundle.EditSingleCorrespondenceTitle_sensitiveFlag}" required="true" requiredMessage="#{bundle.EditSingleCorrespondenceRequiredMessage_sensitiveFlag}"/>
+                        <p:outputLabel value="#{bundle.EditSingleCorrespondenceLabel_contentiousFlag}" for="contentiousFlag" />
+                        <p:inputText id="contentiousFlag" value="#{singleCorrespondenceController.selected.contentiousFlag}" title="#{bundle.EditSingleCorrespondenceTitle_contentiousFlag}" required="true" requiredMessage="#{bundle.EditSingleCorrespondenceRequiredMessage_contentiousFlag}"/>
+                        <p:outputLabel value="#{bundle.EditSingleCorrespondenceLabel_createTime}" for="createTime" />
+                        <p:calendar id="createTime" pattern="MM/dd/yyyy HH:mm:ss" value="#{singleCorrespondenceController.selected.createTime}" title="#{bundle.EditSingleCorrespondenceTitle_createTime}" required="true" requiredMessage="#{bundle.EditSingleCorrespondenceRequiredMessage_createTime}" showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditSingleCorrespondenceLabel_clientSnapshotId}" for="clientSnapshotId" />
+                        <p:selectOneMenu id="clientSnapshotId" value="#{singleCorrespondenceController.selected.clientSnapshotId}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{clientSnapshotController.itemsAvailableSelectOne}"
+                                           var="clientSnapshotIdItem"
+                                           itemValue="#{clientSnapshotIdItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{singleCorrespondenceController.update}" value="#{bundle.Save}" update="display,:SingleCorrespondenceListForm:datalist,:growl" oncomplete="handleSubmit(args, 'SingleCorrespondenceEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="SingleCorrespondenceEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+
+
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListClientSnapshotTitle}"></h:outputText>
+        </ui:define>
+
+        <ui:define name="body">
+            <h:form id="ClientSnapshotListForm">
+                <p:panel header="#{bundle.ListClientSnapshotTitle}">
+                    <p:dataTable id="datalist" value="#{clientSnapshotController.items}" var="item"
+                                 selectionMode="single" selection="#{clientSnapshotController.selected}"
+                                 paginator="true"
+                                 rowKey="#{item.id}"
+                                 rows="10"
+                                 rowsPerPageTemplate="10,20,30,40,50"
+                                 >
+
+                        <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
+                        <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListClientSnapshotTitle_id}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.id}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListClientSnapshotTitle_honorificTitle}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.honorificTitle}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListClientSnapshotTitle_firstName}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.firstName}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListClientSnapshotTitle_middleName}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.middleName}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListClientSnapshotTitle_lastName}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.lastName}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListClientSnapshotTitle_emailTypeCode}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.emailTypeCode}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListClientSnapshotTitle_emailAddress}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.emailAddress}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListClientSnapshotTitle_phoneTypeCode}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.phoneTypeCode}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListClientSnapshotTitle_areaCode}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.areaCode}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListClientSnapshotTitle_localNumber}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.localNumber}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListClientSnapshotTitle_extension}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.extension}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListClientSnapshotTitle_postalAddressTypeCode}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.postalAddressTypeCode}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListClientSnapshotTitle_streetAddressLine1}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.streetAddressLine1}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListClientSnapshotTitle_streetAddressLine2}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.streetAddressLine2}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListClientSnapshotTitle_provinceCode}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.provinceCode}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListClientSnapshotTitle_postalCode}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.postalCode}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListClientSnapshotTitle_countryCode}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.countryCode}"/>
+                        </p:column>
+                        <f:facet name="footer">
+                            <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{clientSnapshotController.prepareCreate}" update=":ClientSnapshotCreateForm" oncomplete="PF('ClientSnapshotCreateDialog').show()"/>
+                            <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":ClientSnapshotViewForm" oncomplete="PF('ClientSnapshotViewDialog').show()" disabled="#{empty clientSnapshotController.selected}"/>
+                            <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":ClientSnapshotEditForm" oncomplete="PF('ClientSnapshotEditDialog').show()" disabled="#{empty clientSnapshotController.selected}"/>
+                            <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{clientSnapshotController.destroy}" update=":growl,datalist" disabled="#{empty clientSnapshotController.selected}"/>
+                        </f:facet>
+                    </p:dataTable>
+                </p:panel>
+            </h:form>
+
+            <ui:include src="Create.xhtml"/>
+            <ui:include src="Edit.xhtml"/>
+            <ui:include src="View.xhtml"/>
+        </ui:define>
+    </ui:composition>
+
+</html>

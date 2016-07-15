@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="IncomingCorrespondenceEditDlg" widgetVar="IncomingCorrespondenceEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditIncomingCorrespondenceTitle}">
+            <h:form id="IncomingCorrespondenceEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{incomingCorrespondenceController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditIncomingCorrespondenceLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{incomingCorrespondenceController.selected.id}" title="#{bundle.EditIncomingCorrespondenceTitle_id}" required="true" requiredMessage="#{bundle.EditIncomingCorrespondenceRequiredMessage_id}"/>
+                        <p:outputLabel value="#{bundle.EditIncomingCorrespondenceLabel_documentDate}" for="documentDate" />
+                        <p:calendar id="documentDate" pattern="MM/dd/yyyy" value="#{incomingCorrespondenceController.selected.documentDate}" title="#{bundle.EditIncomingCorrespondenceTitle_documentDate}" required="true" requiredMessage="#{bundle.EditIncomingCorrespondenceRequiredMessage_documentDate}" showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditIncomingCorrespondenceLabel_receivedTime}" for="receivedTime" />
+                        <p:calendar id="receivedTime" pattern="MM/dd/yyyy HH:mm:ss" value="#{incomingCorrespondenceController.selected.receivedTime}" title="#{bundle.EditIncomingCorrespondenceTitle_receivedTime}" required="true" requiredMessage="#{bundle.EditIncomingCorrespondenceRequiredMessage_receivedTime}" showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditIncomingCorrespondenceLabel_enteredTime}" for="enteredTime" />
+                        <p:calendar id="enteredTime" pattern="MM/dd/yyyy HH:mm:ss" value="#{incomingCorrespondenceController.selected.enteredTime}" title="#{bundle.EditIncomingCorrespondenceTitle_enteredTime}" required="true" requiredMessage="#{bundle.EditIncomingCorrespondenceRequiredMessage_enteredTime}" showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditIncomingCorrespondenceLabel_incomingChannel}" for="incomingChannel" />
+                        <p:inputText id="incomingChannel" value="#{incomingCorrespondenceController.selected.incomingChannel}" title="#{bundle.EditIncomingCorrespondenceTitle_incomingChannel}" required="true" requiredMessage="#{bundle.EditIncomingCorrespondenceRequiredMessage_incomingChannel}"/>
+                        <p:outputLabel value="#{bundle.EditIncomingCorrespondenceLabel_recipientTypeCode}" for="recipientTypeCode" />
+                        <p:inputText id="recipientTypeCode" value="#{incomingCorrespondenceController.selected.recipientTypeCode}" title="#{bundle.EditIncomingCorrespondenceTitle_recipientTypeCode}" required="true" requiredMessage="#{bundle.EditIncomingCorrespondenceRequiredMessage_recipientTypeCode}"/>
+                        <p:outputLabel value="#{bundle.EditIncomingCorrespondenceLabel_subject}" for="subject" />
+                        <p:inputText id="subject" value="#{incomingCorrespondenceController.selected.subject}" title="#{bundle.EditIncomingCorrespondenceTitle_subject}" />
+                        <p:outputLabel value="#{bundle.EditIncomingCorrespondenceLabel_incomingStatusCode}" for="incomingStatusCode" />
+                        <p:inputText id="incomingStatusCode" value="#{incomingCorrespondenceController.selected.incomingStatusCode}" title="#{bundle.EditIncomingCorrespondenceTitle_incomingStatusCode}" />
+                        <p:outputLabel value="#{bundle.EditIncomingCorrespondenceLabel_clientSnapshotId}" for="clientSnapshotId" />
+                        <p:selectOneMenu id="clientSnapshotId" value="#{incomingCorrespondenceController.selected.clientSnapshotId}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{clientSnapshotController.itemsAvailableSelectOne}"
+                                           var="clientSnapshotIdItem"
+                                           itemValue="#{clientSnapshotIdItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditIncomingCorrespondenceLabel_singleCorrespondenceId}" for="singleCorrespondenceId" />
+                        <p:selectOneMenu id="singleCorrespondenceId" value="#{incomingCorrespondenceController.selected.singleCorrespondenceId}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{singleCorrespondenceController.itemsAvailableSelectOne}"
+                                           var="singleCorrespondenceIdItem"
+                                           itemValue="#{singleCorrespondenceIdItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{incomingCorrespondenceController.update}" value="#{bundle.Save}" update="display,:IncomingCorrespondenceListForm:datalist,:growl" oncomplete="handleSubmit(args, 'IncomingCorrespondenceEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="IncomingCorrespondenceEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

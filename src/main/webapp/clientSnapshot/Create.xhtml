@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ClientSnapshotCreateDlg" widgetVar="ClientSnapshotCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateClientSnapshotTitle}">
+            <h:form id="ClientSnapshotCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{clientSnapshotController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateClientSnapshotLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{clientSnapshotController.selected.id}" title="#{bundle.CreateClientSnapshotTitle_id}" required="true" requiredMessage="#{bundle.CreateClientSnapshotRequiredMessage_id}"/>
+                        <p:outputLabel value="#{bundle.CreateClientSnapshotLabel_honorificTitle}" for="honorificTitle" />
+                        <p:inputText id="honorificTitle" value="#{clientSnapshotController.selected.honorificTitle}" title="#{bundle.CreateClientSnapshotTitle_honorificTitle}" />
+                        <p:outputLabel value="#{bundle.CreateClientSnapshotLabel_firstName}" for="firstName" />
+                        <p:inputText id="firstName" value="#{clientSnapshotController.selected.firstName}" title="#{bundle.CreateClientSnapshotTitle_firstName}" required="true" requiredMessage="#{bundle.CreateClientSnapshotRequiredMessage_firstName}"/>
+                        <p:outputLabel value="#{bundle.CreateClientSnapshotLabel_middleName}" for="middleName" />
+                        <p:inputText id="middleName" value="#{clientSnapshotController.selected.middleName}" title="#{bundle.CreateClientSnapshotTitle_middleName}" />
+                        <p:outputLabel value="#{bundle.CreateClientSnapshotLabel_lastName}" for="lastName" />
+                        <p:inputText id="lastName" value="#{clientSnapshotController.selected.lastName}" title="#{bundle.CreateClientSnapshotTitle_lastName}" required="true" requiredMessage="#{bundle.CreateClientSnapshotRequiredMessage_lastName}"/>
+                        <p:outputLabel value="#{bundle.CreateClientSnapshotLabel_emailTypeCode}" for="emailTypeCode" />
+                        <p:inputText id="emailTypeCode" value="#{clientSnapshotController.selected.emailTypeCode}" title="#{bundle.CreateClientSnapshotTitle_emailTypeCode}" />
+                        <p:outputLabel value="#{bundle.CreateClientSnapshotLabel_emailAddress}" for="emailAddress" />
+                        <p:inputText id="emailAddress" value="#{clientSnapshotController.selected.emailAddress}" title="#{bundle.CreateClientSnapshotTitle_emailAddress}" />
+                        <p:outputLabel value="#{bundle.CreateClientSnapshotLabel_phoneTypeCode}" for="phoneTypeCode" />
+                        <p:inputText id="phoneTypeCode" value="#{clientSnapshotController.selected.phoneTypeCode}" title="#{bundle.CreateClientSnapshotTitle_phoneTypeCode}" />
+                        <p:outputLabel value="#{bundle.CreateClientSnapshotLabel_areaCode}" for="areaCode" />
+                        <p:inputText id="areaCode" value="#{clientSnapshotController.selected.areaCode}" title="#{bundle.CreateClientSnapshotTitle_areaCode}" />
+                        <p:outputLabel value="#{bundle.CreateClientSnapshotLabel_localNumber}" for="localNumber" />
+                        <p:inputText id="localNumber" value="#{clientSnapshotController.selected.localNumber}" title="#{bundle.CreateClientSnapshotTitle_localNumber}" />
+                        <p:outputLabel value="#{bundle.CreateClientSnapshotLabel_extension}" for="extension" />
+                        <p:inputText id="extension" value="#{clientSnapshotController.selected.extension}" title="#{bundle.CreateClientSnapshotTitle_extension}" />
+                        <p:outputLabel value="#{bundle.CreateClientSnapshotLabel_postalAddressTypeCode}" for="postalAddressTypeCode" />
+                        <p:inputText id="postalAddressTypeCode" value="#{clientSnapshotController.selected.postalAddressTypeCode}" title="#{bundle.CreateClientSnapshotTitle_postalAddressTypeCode}" />
+                        <p:outputLabel value="#{bundle.CreateClientSnapshotLabel_streetAddressLine1}" for="streetAddressLine1" />
+                        <p:inputText id="streetAddressLine1" value="#{clientSnapshotController.selected.streetAddressLine1}" title="#{bundle.CreateClientSnapshotTitle_streetAddressLine1}" />
+                        <p:outputLabel value="#{bundle.CreateClientSnapshotLabel_streetAddressLine2}" for="streetAddressLine2" />
+                        <p:inputText id="streetAddressLine2" value="#{clientSnapshotController.selected.streetAddressLine2}" title="#{bundle.CreateClientSnapshotTitle_streetAddressLine2}" />
+                        <p:outputLabel value="#{bundle.CreateClientSnapshotLabel_provinceCode}" for="provinceCode" />
+                        <p:inputText id="provinceCode" value="#{clientSnapshotController.selected.provinceCode}" title="#{bundle.CreateClientSnapshotTitle_provinceCode}" />
+                        <p:outputLabel value="#{bundle.CreateClientSnapshotLabel_postalCode}" for="postalCode" />
+                        <p:inputText id="postalCode" value="#{clientSnapshotController.selected.postalCode}" title="#{bundle.CreateClientSnapshotTitle_postalCode}" />
+                        <p:outputLabel value="#{bundle.CreateClientSnapshotLabel_countryCode}" for="countryCode" />
+                        <p:inputText id="countryCode" value="#{clientSnapshotController.selected.countryCode}" title="#{bundle.CreateClientSnapshotTitle_countryCode}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{clientSnapshotController.create}" value="#{bundle.Save}" update="display,:ClientSnapshotListForm:datalist,:growl" oncomplete="handleSubmit(args,'ClientSnapshotCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="ClientSnapshotCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

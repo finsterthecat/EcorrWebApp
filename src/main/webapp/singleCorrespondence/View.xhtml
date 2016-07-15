@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="SingleCorrespondenceViewDlg" widgetVar="SingleCorrespondenceViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewSingleCorrespondenceTitle}">
+            <h:form id="SingleCorrespondenceViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{singleCorrespondenceController.selected != null}">
+                        <h:outputText value="#{bundle.ViewSingleCorrespondenceLabel_id}"/>
+                        <h:outputText value="#{singleCorrespondenceController.selected.id}" title="#{bundle.ViewSingleCorrespondenceTitle_id}"/>
+                        <h:outputText value="#{bundle.ViewSingleCorrespondenceLabel_caseNumber}"/>
+                        <h:outputText value="#{singleCorrespondenceController.selected.caseNumber}" title="#{bundle.ViewSingleCorrespondenceTitle_caseNumber}"/>
+                        <h:outputText value="#{bundle.ViewSingleCorrespondenceLabel_caseStatusCode}"/>
+                        <h:outputText value="#{singleCorrespondenceController.selected.caseStatusCode}" title="#{bundle.ViewSingleCorrespondenceTitle_caseStatusCode}"/>
+                        <h:outputText value="#{bundle.ViewSingleCorrespondenceLabel_closedDate}"/>
+                        <h:outputText value="#{singleCorrespondenceController.selected.closedDate}" title="#{bundle.ViewSingleCorrespondenceTitle_closedDate}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewSingleCorrespondenceLabel_dueDate}"/>
+                        <h:outputText value="#{singleCorrespondenceController.selected.dueDate}" title="#{bundle.ViewSingleCorrespondenceTitle_dueDate}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewSingleCorrespondenceLabel_sensitiveFlag}"/>
+                        <h:outputText value="#{singleCorrespondenceController.selected.sensitiveFlag}" title="#{bundle.ViewSingleCorrespondenceTitle_sensitiveFlag}"/>
+                        <h:outputText value="#{bundle.ViewSingleCorrespondenceLabel_contentiousFlag}"/>
+                        <h:outputText value="#{singleCorrespondenceController.selected.contentiousFlag}" title="#{bundle.ViewSingleCorrespondenceTitle_contentiousFlag}"/>
+                        <h:outputText value="#{bundle.ViewSingleCorrespondenceLabel_createTime}"/>
+                        <h:outputText value="#{singleCorrespondenceController.selected.createTime}" title="#{bundle.ViewSingleCorrespondenceTitle_createTime}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewSingleCorrespondenceLabel_clientSnapshotId}"/>
+                        <h:outputText value="#{singleCorrespondenceController.selected.clientSnapshotId}" title="#{bundle.ViewSingleCorrespondenceTitle_clientSnapshotId}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="SingleCorrespondenceViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

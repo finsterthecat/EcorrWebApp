@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="IncomingCorrespondenceViewDlg" widgetVar="IncomingCorrespondenceViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewIncomingCorrespondenceTitle}">
+            <h:form id="IncomingCorrespondenceViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{incomingCorrespondenceController.selected != null}">
+                        <h:outputText value="#{bundle.ViewIncomingCorrespondenceLabel_id}"/>
+                        <h:outputText value="#{incomingCorrespondenceController.selected.id}" title="#{bundle.ViewIncomingCorrespondenceTitle_id}"/>
+                        <h:outputText value="#{bundle.ViewIncomingCorrespondenceLabel_documentDate}"/>
+                        <h:outputText value="#{incomingCorrespondenceController.selected.documentDate}" title="#{bundle.ViewIncomingCorrespondenceTitle_documentDate}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewIncomingCorrespondenceLabel_receivedTime}"/>
+                        <h:outputText value="#{incomingCorrespondenceController.selected.receivedTime}" title="#{bundle.ViewIncomingCorrespondenceTitle_receivedTime}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewIncomingCorrespondenceLabel_enteredTime}"/>
+                        <h:outputText value="#{incomingCorrespondenceController.selected.enteredTime}" title="#{bundle.ViewIncomingCorrespondenceTitle_enteredTime}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewIncomingCorrespondenceLabel_incomingChannel}"/>
+                        <h:outputText value="#{incomingCorrespondenceController.selected.incomingChannel}" title="#{bundle.ViewIncomingCorrespondenceTitle_incomingChannel}"/>
+                        <h:outputText value="#{bundle.ViewIncomingCorrespondenceLabel_recipientTypeCode}"/>
+                        <h:outputText value="#{incomingCorrespondenceController.selected.recipientTypeCode}" title="#{bundle.ViewIncomingCorrespondenceTitle_recipientTypeCode}"/>
+                        <h:outputText value="#{bundle.ViewIncomingCorrespondenceLabel_subject}"/>
+                        <h:outputText value="#{incomingCorrespondenceController.selected.subject}" title="#{bundle.ViewIncomingCorrespondenceTitle_subject}"/>
+                        <h:outputText value="#{bundle.ViewIncomingCorrespondenceLabel_incomingStatusCode}"/>
+                        <h:outputText value="#{incomingCorrespondenceController.selected.incomingStatusCode}" title="#{bundle.ViewIncomingCorrespondenceTitle_incomingStatusCode}"/>
+                        <h:outputText value="#{bundle.ViewIncomingCorrespondenceLabel_clientSnapshotId}"/>
+                        <h:outputText value="#{incomingCorrespondenceController.selected.clientSnapshotId}" title="#{bundle.ViewIncomingCorrespondenceTitle_clientSnapshotId}"/>
+                        <h:outputText value="#{bundle.ViewIncomingCorrespondenceLabel_singleCorrespondenceId}"/>
+                        <h:outputText value="#{incomingCorrespondenceController.selected.singleCorrespondenceId}" title="#{bundle.ViewIncomingCorrespondenceTitle_singleCorrespondenceId}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="IncomingCorrespondenceViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>
